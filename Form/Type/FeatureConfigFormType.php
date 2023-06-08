@@ -32,6 +32,12 @@ class FeatureConfigFormType extends AbstractType
                     'tooltip' => 'mautic.smsfactor.config.simulate_send.tooltip',
                 ],
             ])
+            ->add('always_send_stop', BooleanType::class, [
+                'label' => 'mautic.smsfactor.config.always_send_stop',
+                'attr' => [
+                    'tooltip' => 'mautic.smsfactor.config.always_send_stop.tooltip',
+                ],
+            ])
             ->add('default_country', CountryType::class, [
                 'label' => 'mautic.smsfactor.config.default_country',
                 'attr' => [
@@ -41,5 +47,6 @@ class FeatureConfigFormType extends AbstractType
         ;
 
         $builder->get('simulate_send')->addModelTransformer(new YesNoBooleanTransformer());
+        $builder->get('always_send_stop')->addModelTransformer(new YesNoBooleanTransformer());
     }
 }

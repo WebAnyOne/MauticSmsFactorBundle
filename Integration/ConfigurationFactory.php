@@ -27,9 +27,10 @@ class ConfigurationFactory
         ['api_token' => $apiToken] = $config->getApiKeys();
         [
             'simulate_send' => $simulateSend,
+            'always_send_stop' => $alwaysSendStop,
             'default_country' => $defaultCountry,
         ] = ($config->getFeatureSettings()['integration'] ?? []) + Configuration::getDefaults();
 
-        return new Configuration($apiToken, $defaultCountry, $simulateSend);
+        return new Configuration($apiToken, $defaultCountry, $simulateSend, $alwaysSendStop);
     }
 }

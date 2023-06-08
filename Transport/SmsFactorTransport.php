@@ -62,7 +62,7 @@ class SmsFactorTransport implements TransportInterface
         try {
             $response = Message::send([
                 'to' => $sanitizedNumber,
-                'text' => $content,
+                'text' => $this->getTextMessageContent($content),
                 'gsmsmsid' => $gsmSmsId,
             ], $this->configuration->isSimulateSend());
 
@@ -133,5 +133,16 @@ class SmsFactorTransport implements TransportInterface
         }
 
         SMSFactor::setApiToken($apiToken);
+    }
+
+    private function getTextMessageContent(string $content): string
+    {
+        // If enabled, always append the STOP message placeholder before sending ot the API.
+        // This placeholder will be replaced by the SMS Factor API with the appropriate STOP message.
+        if ($this->configuration->isAlwaysSendStop()) {
+            $content .= "\n<-stop->";
+        }
+
+        return $content;
     }
 }

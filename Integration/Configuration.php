@@ -7,21 +7,33 @@ namespace MauticPlugin\MauticSmsFactorBundle\Integration;
 class Configuration
 {
     private string $apiToken;
+
+    /**
+     * True will simulate sending the text messages rather than sending it for real to the contact
+     */
     private bool $simulateSend;
 
     /**
-     * @var string The default country code to use when the phone number does not have a country code prefix.
+     * True will always append the <-stop-> tag to the text message whenever contacting the SMS Factor API.
+     * This placeholder will be replaced by the API with a generic "stop" message content.
+     */
+    private bool $alwaysSendStop;
+
+    /**
+     * The default country code to use when the phone number does not have a country code prefix.
      */
     private string $defaultCountry;
 
     public function __construct(
         string $apiToken,
         string $defaultCountry,
-        bool $simulateSend = false
+        bool $simulateSend = false,
+        bool $alwaysSendStop = true
     ) {
         $this->apiToken = $apiToken;
         $this->simulateSend = $simulateSend;
         $this->defaultCountry = $defaultCountry;
+        $this->alwaysSendStop = $alwaysSendStop;
     }
 
     /**
@@ -36,6 +48,7 @@ class Configuration
     {
         return [
             'simulate_send' => false,
+            'always_send_stop' => true,
             'default_country' => 'FR',
         ];
     }
@@ -53,5 +66,10 @@ class Configuration
     public function getDefaultCountry(): string
     {
         return $this->defaultCountry;
+    }
+
+    public function isAlwaysSendStop(): bool
+    {
+        return $this->alwaysSendStop;
     }
 }
