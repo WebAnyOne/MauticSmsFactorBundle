@@ -21,7 +21,7 @@ class ConfigurationFactory
 
     public function create(): Configuration
     {
-        $integration = $this->integrationHelper->getIntegration('SmsFactor');
+        $integration = $this->integrationHelper->getIntegration('SMSFactor');
         $config = $this->integrationHelper->getIntegrationConfiguration($integration);
 
         ['api_token' => $apiToken] = $config->getApiKeys();

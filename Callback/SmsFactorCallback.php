@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 /**
- * Receive text messages from a MO webhook setup on SmsFactor.
+ * Receive text messages from a MO webhook setup on SMSFactor.
  *
  * @see https://dev.smsfactor.com/en/api/sms/webhook/replies
  * @see https://dev.smsfactor.com/en/api/sms/webhook/stops
@@ -42,7 +42,7 @@ class SmsFactorCallback implements CallbackInterface
 
         $number = $request->get('from');
 
-        // SmsFactor sends the number without the leading + sign.
+        // SMSFactor sends the number without the leading + sign.
         if (!str_starts_with($number, '+')) {
             $number = "+$number";
         }

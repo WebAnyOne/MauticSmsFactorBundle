@@ -17,7 +17,7 @@ class SmsFactorIntegration extends BasicIntegration implements BasicInterface, C
 {
     use DefaultConfigFormTrait;
 
-    public const NAME = 'SmsFactor';
+    public const NAME = 'SMSFactor';
 
     public function getName(): string
     {
@@ -26,7 +26,7 @@ class SmsFactorIntegration extends BasicIntegration implements BasicInterface, C
 
     public function getDisplayName(): string
     {
-        return 'SMS Factor';
+        return 'SMSFactor';
     }
 
     public function getIcon(): string
