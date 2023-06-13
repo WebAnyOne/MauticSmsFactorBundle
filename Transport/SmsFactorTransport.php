@@ -19,7 +19,7 @@ use SMSFactor\Message;
 use SMSFactor\SMSFactor;
 
 /**
- * Send SMS messages using the SMS Factor API.
+ * Send SMS messages using the SMSFactor API.
  *
  * @see https://dev.smsfactor.com/en/api/sms/send/send-single
  */
@@ -92,19 +92,19 @@ class SmsFactorTransport implements TransportInterface
 
             return true;
         } catch (Base $smsFactorError) {
-            $this->logger->error('Unexpected error while trying to contact SMS Factor API: {exception_message}', [
+            $this->logger->error('Unexpected error while trying to contact SMSFactor API: {exception_message}', [
                 'exception' => $smsFactorError,
                 'exception_message' => $smsFactorError->getMessage(),
             ]);
 
             return $smsFactorError->getMessage();
         } catch (\Throwable $exception) {
-            $this->logger->error('Unexpected error while trying to contact SMS Factor API: {exception_message}', [
+            $this->logger->error('Unexpected error while trying to contact SMSFactor API: {exception_message}', [
                 'exception' => $exception,
                 'exception_message' => $exception->getMessage(),
             ]);
 
-            return 'An unexpected error occurred while trying to contact SMS Factor API. Please check your logs for more details.';
+            return 'An unexpected error occurred while trying to contact SMSFactor API. Please check your logs for more details.';
         }
     }
 
@@ -138,7 +138,7 @@ class SmsFactorTransport implements TransportInterface
     private function getTextMessageContent(string $content): string
     {
         // If enabled, always append the STOP message placeholder before sending ot the API.
-        // This placeholder will be replaced by the SMS Factor API with the appropriate STOP message.
+        // This placeholder will be replaced by the SMSFactor API with the appropriate STOP message.
         if ($this->configuration->isAlwaysSendStop()) {
             $content .= "\n<-stop->";
         }

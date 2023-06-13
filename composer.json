@@ -1,5 +1,5 @@
 {
-  "name": "webanyone/mautic-sms-factor-bundle",
+  "name": "webanyone/mautic-smsfactor-bundle",
   "description": "MauticSmsFactorBundle",
   "license": "GPL-3.0",
   "type": "mautic-plugin",

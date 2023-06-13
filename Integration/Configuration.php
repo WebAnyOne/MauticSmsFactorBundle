@@ -14,7 +14,7 @@ class Configuration
     private bool $simulateSend;
 
     /**
-     * True will always append the <-stop-> tag to the text message whenever contacting the SMS Factor API.
+     * True will always append the <-stop-> tag to the text message whenever contacting the SMSFactor API.
      * This placeholder will be replaced by the API with a generic "stop" message content.
      */
     private bool $alwaysSendStop;
