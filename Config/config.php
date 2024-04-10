@@ -11,7 +11,7 @@ use MauticPlugin\MauticSmsFactorBundle\Transport\SmsFactorTransport;
 return [
     'name' => 'SMSFactor',
     'description' => 'Send text messages with SMSFactor',
-    'version' => '0.0.1',
+    'version' => '0.0.2',
     'author' => 'elao',
     'services' => [
         'integrations' => [
@@ -47,7 +47,7 @@ return [
                 ],
                 'tag' => 'mautic.sms_transport',
                 'tagArguments' => [
-                    'integrationAlias' => 'SMSFactor',
+                    'integrationAlias' => 'SmsFactor',
                 ],
                 'serviceAliases' => [
                     'sms_api',
@@ -73,7 +73,7 @@ return [
                     'parent' => 'mautic.core.channels',
                     'checks' => [
                         'integration' => [
-                            'SMSFactor' => [
+                            'SmsFactor' => [
                                 'enabled' => true,
                             ],
                         ],
