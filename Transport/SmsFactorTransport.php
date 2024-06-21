@@ -133,6 +133,7 @@ class SmsFactorTransport implements TransportInterface
         }
 
         SMSFactor::setApiToken($apiToken);
+        SMSFactor::setApplicationCode(33); // Dedicated Mautic application code. Do not change it.
     }
 
     private function getTextMessageContent(string $content): string
